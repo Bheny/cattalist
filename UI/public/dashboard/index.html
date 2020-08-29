@@ -1,0 +1,99 @@
+{% extends 'dashboard/base/base.html' %}
+
+{% block content %}
+	<main class="flex block bg-gray-200">
+		{% include 'dashboard/base/nav.html' %}
+		<section class="ml-16 m-2 w-full ">
+			<div class="border-b w-full">
+				<span class="text-xl font-bold">Welcome to the Dashboard</span>
+			</div>
+			<div class="mt-2 w-full">
+				<span class="border-b p-2 w-full">Activity</span>
+			<div class="grid gap-2 grid-cols-2 lg:grid-cols-4 mt-4 ">
+
+				<div class="border h-32 w-full rounded shadow p-2 mb-2 bg-white">
+					<span class="block text-gray-900 font-extrabold font">Daily Visits</span>
+					<span class="text-4xl m-6">230</span>
+				</div>
+				<div class="border h-32 w-full rounded shadow p-2 mb-2 bg-white">
+					<span class="block text-gray-900 font-extrabold font">Daily Reservations</span>
+					<span class="text-4xl m-6">230</span>
+				</div>
+				
+				<div class="border h-32 w-full rounded shadow p-2 mb-2 bg-white">
+					<span class="block text-gray-900 font-extrabold font"> New listings</span>
+					<span class="text-4xl m-6">230</span>
+				</div>
+				
+				<div class="border h-32 w-full rounded shadow p-2 mb-2 bg-white">
+					<span class="block text-gray-900 font-extrabold font">New Places</span>
+					<span class="text-4xl m-6">530</span>
+				</div>
+				
+			</div>
+		</div>
+		<div id="users" class="mt-2 w-full">
+				<span class="border-b p-2 w-full">Users</span>
+			<div class="grid gap-2 grid-cols-2 lg:grid-cols-4 mt-4 ">
+
+				<div class="border h-32 w-full rounded shadow p-2 mb-2 bg-white">
+					<span class="block text-gray-900 font-extrabold font">New Users</span>
+					<span class="text-4xl m-6">230</span>
+				</div>
+				<div class="border h-32 w-full rounded shadow p-2 mb-2 bg-white">
+					<span class="block text-gray-900 font-extrabold font">Registered Users</span>
+					<span class="text-4xl m-6">230</span>
+				</div>
+				<div class="border h-32 w-full rounded shadow p-2 mb-2 bg-white">
+					<span class="block text-gray-900 font-extrabold font">Active Users</span>
+					<span class="text-4xl m-6">230</span>
+				</div>
+				<div class="border h-32 w-full rounded shadow p-2 mb-2 bg-white">
+					<span class="block text-gray-900 font-extrabold font"> listings</span>
+					<span class="text-4xl m-6">230</span>
+				</div>
+				
+			</div>
+		</div>
+		<div class="mt-2 w-full">
+				<span class="border-b p-2 w-full">Listing</span>
+			<div class="grid gap-2 grid-cols-2 lg:grid-cols-4 mt-4 ">
+				<div class="border h-32 w-full rounded shadow p-2 mb-2 bg-white">
+					<span class="block text-gray-900 font-extrabold font"> listings</span>
+					<span class="text-4xl m-6">230</span>
+				</div>
+				<div class="border h-32 w-full rounded shadow p-2 mb-2 bg-white">
+					<span class="block text-gray-900 font-extrabold font">Total Number of Rooms</span>
+					<span class="text-4xl m-6">530</span>
+				</div>
+				<div class="border h-32 w-full rounded shadow p-2 mb-2 bg-white">
+					<span class="block text-gray-900 font-extrabold font">Places</span>
+					<span class="text-4xl m-6">530</span>
+				</div>
+				<div class="border h-32 w-full rounded shadow p-2 mb-2 bg-white">
+					<span class="block text-gray-900 font-extrabold font">Events</span>
+					<span class="text-4xl m-6">530</span>
+				</div>
+			</div>
+		</div>
+		<div id="manage" class="mt-2 w-full">
+				<span class="border-b p-2 w-full">Manage listing </span>
+			<div class="grid gap-2 grid-cols-2 lg:grid-cols-4 mt-4 ">
+				<a href="{% url 'dashboard:add_listing' %}"><div class="border h-32 w-full rounded shadow p-2 mb-2 bg-white">
+					<span class="block text-gray-900 font-extrabold font">Add listings</span>
+					<span class="m-6"><svg viewBox="0 0 20 20" fill="currentColor" class="plus-circle w-10 h-10 ml-10 mr-10"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V7z" clip-rule="evenodd"></path></svg></span>
+				</div></a>
+				<div class="border h-32 w-full rounded shadow p-2 mb-2 bg-white">
+					<span class="block text-gray-900 font-extrabold font">Add Event</span>
+					<span class="m-6"><svg viewBox="0 0 20 20" fill="currentColor" class="plus-circle w-10 h-10 ml-10 mr-10"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V7z" clip-rule="evenodd"></path></svg></span>
+				</div>
+				<div class="border h-32 w-full rounded shadow p-2 mb-2 bg-white">
+					<span class="block text-gray-900 font-extrabold font">Add Place</span>
+					<span class="m-6"><svg viewBox="0 0 20 20" fill="currentColor" class="plus-circle w-10 h-10 ml-10 mr-10"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V7z" clip-rule="evenodd"></path></svg></span>
+				</div>
+			</div>
+		</div>
+		</section>
+	</main>
+	
+{% endblock %}

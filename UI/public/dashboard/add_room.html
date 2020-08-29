@@ -1,0 +1,67 @@
+{% extends 'dashboard/base/base.html' %}
+
+{% block content %}
+ <main class=" bg-gray-200">
+ 	{% include 'dashboard/base/nav.html' %}
+ 	<section class="ml-10 p-2">
+	 	<div class=" w-full p-2">
+	 		<h2 class="text-3xl font-bold text-gray-800">Almost Done ...</h2>
+	 		<form class="border rounded-lg bg-white p-2" action="{% url 'dashboard:add_others' %}" method="POST">{% csrf_token %}
+	 			<div class="border h-2 flex">
+	 				<div class="w-1/3 h-full bg-blue-700"></div>
+	 				<div class="w-1/3 h-full bg-blue-700"></div>
+	 			</div>
+	 			<hr>
+	 			<label for="" class="block font-bold">Structure:</label>
+	 			<select class="border bg-white rounded w-full h-10 mb-2 p-2">
+	 				{% for area in areas %}
+	 				<option>{{ area.name }}</option>
+	 				{% endfor %}
+	 			</select>
+	 			<hr>
+	 			<label for="" class="block font-bold">Image:</label>
+	 			<input type="file" name="" class="border rounded w-full mb-2 p-2">
+	 			<hr>
+	 			<label for="" class="block font-bold">Name:</label>
+	 			<input type="text" name="" class="border rounded w-full h-10 mb-2 p-2">
+	 			<hr>
+	 			<label for="" class="block font-bold">Slug:</label>
+	 			<input type="text" name="" class="border rounded w-full h-10 mb-2 p-2">
+	 			<hr>
+	 			<div class="flex h-10 p-2">
+	 			<input type="Checkbox" name="" class="block incline mr-2">
+	 			<label for="" class="font-bold">Available</label>
+	 			</div>
+	 			<hr>
+	 			<label for="" class="block font-bold">Price:</label>
+	 			<input type="number" name="" class="border rounded w-full h-10 mb-2 p-2">
+	 			<hr>
+	 			<label for="" class="block font-bold">Rate:</label>
+	 			<select class="border bg-white rounded w-full h-10 mb-2 p-2">
+	 				{% for area in areas %}
+	 				<option>{{ area.name }}</option>
+	 				{% endfor %}
+	 			</select>
+	 			<hr>
+	 			<label for="" class="block font-bold">Description:</label>
+	 			<textarea name="" class="border rounded w-full h-32 mb-2 p-2">
+	 			</textarea>
+	 			<hr>
+	 			<label for="" class="block font-bold">Max Roomates:</label>
+	 			<input type="number" name="" class="border rounded w-full h-10 mb-2 p-2">
+	 			<hr>
+	 			
+	 			
+	 			<div class="content-center items-center justify-center p-2">
+	 			<button class="h-10 bg-blue-700 p-2 rounded text-white w-full ">Continue</button>
+	 		</div>
+
+
+	 		</form>
+	 		<div class="content-center items-center justify-center p-2">
+	 			<a href="{% url 'dashboard:add_room' %}"><button class="h-10 bg-blue-700 p-2 rounded text-white w-full ">Add Another</button></a>
+	 	</div>
+	 		
+ </section>
+ </main>
+{% endblock %}

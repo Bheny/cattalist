@@ -1,0 +1,62 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Cattalist.com</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+</head>
+<body style="background-color:#fdfdfd; color:#3c3a3a" >
+	{% block content %}
+
+	{% endblock %}
+	<script type="text/javascript">
+		function openNav() {
+				 document.getElementById("snav").className = "h-full w-2/3 border bg-gray-100 fixed p-2 z-10";
+ 				 
+			}
+
+		function closeNav(){
+				document.getElementById("snav").className = "hidden";
+		}
+
+		function openNotification(){
+			let element = document.getElementById("notify") 
+			if(element.className == "hidden"){
+				element.className = "h-64 w-full mr-4 m-2 border bg-gray-100 my-12 rounded-lg fixed p-2";
+			} else {
+				element.className = "hidden";
+			};
+			
+					}
+		function closeNotification(){
+				document.getElementById("notify").className = "hidden";
+		}
+
+		function load(){
+			document.getElementById("more").className = "border shadow h-full mb-2 md:mr-2 rounded-lg";
+		}
+
+		function hide(){
+			document.getElementById("signup").className = "hidden";
+		}
+		function view(){
+			closeNav();
+			document.getElementById("signup").className = "h-full bg-black bg-opacity-75 w-full fixed ";
+		}
+		function add(){
+			document.getElementById("bell").innerHTML = "Added to watchlist";
+		}
+		function drop(){
+			let element = document.getElementById("dropdown");
+			if(element.className == "hidden"){
+				element.className = "mt-4 border-b pb-2";
+			} else {
+				element.className = "hidden";
+			}
+			
+		}
+	</script>
+</body>
+</html>
