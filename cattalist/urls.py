@@ -20,14 +20,16 @@ from pages import views
 from django.conf import settings 
 from django.conf.urls.static import static
 from django.contrib.auth import views as auth_views
-
+from Users.views import register
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('listing/',include('listing.urls')),
     path('dashboard', include('dashboard.urls')),
     path('', views.home, name="home"),
-    path('Login/', auth_views.LoginView.as_view(template_name='users/login.html'), name="login"),
+    path('about/',views.about, name="about"),
+    path('Signup/', register, name='register'),
+    path('Login/', auth_views.LoginView.as_view(template_name='login.html'), name="login"),
     path('Logout/', auth_views.LogoutView.as_view(template_name='index.html'), name="logout"),
     
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

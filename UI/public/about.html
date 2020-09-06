@@ -1,0 +1,72 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block content %}
+<main>
+	<section class="bg-blue-900 h-46 p-10"><!-- This is the banner section -->
+		<div class="h-12 mb-4">
+				<div class="hidden lg:block lg:w-2/5 h-12 p-2 float-left text-white ">
+					<span class="font-extrabold text-3xl">ℂ𝔸𝕋𝕋𝔸𝕃𝕀𝕊𝕋.ℂ𝕆𝕄</span>
+				</div>
+			
+			<div class="hidden lg:block lg:w-3/5 h-12 p-2 pl-40 float-right text-white font-bold ">
+				
+				<a href="{% url 'home' %}"><span class="mr-6 text-lg underline hover:text-gray-700">Home</span></a>
+				<a href="{% url 'about' %}"><span class="mr-6 text-lg underline hover:text-gray-700">About Us</span></a>
+				<span class="mr-6 text-lg underline hover:text-gray-700">FAQ</span>
+				<span class="mr-6 text-lg underline hover:text-gray-700">Contact Us</span>
+				<a href="{% url 'login' %}"><span class="mr-6 text-lg underline hover:text-gray-700">Login</span></a>
+				<a href="{% url 'register' %}"><button class="mr-6 text-lg border p-2 font-bold  hover:text-gray-700">Sign Up</button></a>
+			</div>
+			</div>
+		<center>
+			<span class="text-4xl font-bold text-white">ABOUT US</span>
+		</center>
+	</section>
+	<section class="p-10"><!-- Page content -->
+		<div class="p-2 border h-full">
+			<h2 class="text-3xl font-bold underline">Who Are We ??</h2>
+			<p>
+				Cattalist.com is a space renting platform where we take our time to provide ours users with reliable access to rental information otherwise not available to the local public. The cattalist is made up of a team of 5 students who realise the challenge their mates as well as themselves were facing when it comes to finding a space to rent as room or shop hence led by Bernard Tay we built Cattalist.com to solve that basic challenge.
+			</p>
+			<h2 class="text-3xl font-bold underline">What do we do ??</h2>
+			<p> We remove the hustle of going around looking for places to rent. Here , Hosts or owners of spaces can place their structures here and get an offer within hours. We have a dedicated team of Agents who make it their days job to find this spaces for rent and get good deals just for our users.
+			</p>
+			<h2 class="text-3xl font-bold underline">OUR MISSION</h2>
+			<p>
+				Well , we have decided to ensure that all available spaces for rent can be found on our page. Becoming one of the most dependable space searching platform the African communicaty has ever had at their expense. We would ensure to list at least 50 spaces every month.
+			</p>
+			<h2 class="text-3xl font-bold underline">OUR VISION</h2>
+			<p>
+				Basically in the years to come, we are going to expand to a continental level but before that we would cover all covers of our beloved country GHANA. we would link up with hotels guest houses and other services who would allow customers to book trips , stays and the lot. We are going to become the very personification of space rentals.
+			</p>
+		</div>
+		<div class="mt-2 p-2"><!-- corousel for team display !-->
+			<h2 class="text-3xl font-bold underline">Meet The Tean</h2>
+			<div class="flex">
+				<div class="">
+					<div><!-- card head -->
+						<img src="/static/imgs/flyer3.jpeg" class="rounded-full h-40 w-40">
+					</div>
+					<div class="p-2">
+						<span class="text-2xl font-bold block">Bernard Tay</span>
+						<span class="text-gray-700">Founder & CEO</span>
+					</div>
+				</div>
+				<div class="ml-12">
+					<div><!-- card head -->
+						<img src="/static/imgs/flyer3.jpeg" class="rounded-full h-40 w-40">
+					</div>
+					<div class="p-2">
+						<span class="text-2xl font-bold block">David Ajorlolo</span>
+						<span class="text-gray-700">Co-founder & P.R.O</span>
+					</div>
+				</div>
+
+				
+			</div>
+			
+		</div>
+	</section>
+</main>
+{% endblock %}

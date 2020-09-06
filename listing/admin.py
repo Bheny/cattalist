@@ -15,6 +15,7 @@ admin.site.register(Amenity)
 
 class RoomAdmin(admin.ModelAdmin):
 	form = RoomAdminForm
+	
 	prepopulated_fields = {'slug' : ('name',)}
 admin.site.register(Room, RoomAdmin)
 

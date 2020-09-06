@@ -25,7 +25,7 @@ SECRET_KEY = ')go!msz(jsd741@(59hehct)3(4esu94*f=(c+^0w6e!afbiy+'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['10.42.0.1','192.168.42.56','localhost']
+ALLOWED_HOSTS = ['10.42.0.1','192.168.42.56','192.168.42.224','192.168.42.199','localhost','192.168.1.2']
 
 
 # Application definition
@@ -33,7 +33,7 @@ ALLOWED_HOSTS = ['10.42.0.1','192.168.42.56','localhost']
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
-    'django.contrib.contenttypes',
+    'django.contrib.contenttypes', 
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
@@ -73,7 +73,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'notifications.context_processors.notifications'
+                'notifications.context_processors.notifications',
+                'Users.context_processors.users',
             ],
         },
     },

@@ -26,7 +26,7 @@ def register(request):
 			messages.success(request, f'Error creating Account !!')
 	else:
 		form = UserRegisterForm()
-	return render(request, 'users/register.html', {'form':form})	
+	return render(request, 'register.html', {'form':form})	
 '''
 
 def register(request):

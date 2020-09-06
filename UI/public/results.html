@@ -4,39 +4,40 @@
 {% block content %}
 
 	{% include 'base/nav.html' %}
-	<main class="h-full ">
-		<div class="h-full md:pb-32 border-b p-4 pl-2 pb-10 sm:bg-cover bg-blue-900" ><!-- banner -->
+	<main class="h-full bg-gray-100">
+		<div class="h-full md:pb-32 border-b p-4 pl-2 pb-10 sm:bg-cover bg-gray-900" ><!-- banner -->
 			<div class="h-12">
 				<div class="hidden lg:block lg:w-2/5 h-12 p-2 float-left text-white ">
-					<span class="font-extrabold text-3xl">ℂ𝔸𝕋𝕋𝔸𝕃𝕀𝕊𝕋.ℂ𝕆𝕄</span>
+					<span class="font-extrabold text-2xl">CATTALIST.COM</span>
 				</div>
 			
 			<div class="hidden lg:block lg:w-3/5 h-12 p-2 pl-40 float-right text-white font-bold ">
 				
 				<a href="{% url 'home' %}"><span class="mr-6 text-lg underline hover:text-gray-700">Home</span></a>
-				<a href="{% url 'about' %}"><span class="mr-6 text-lg underline hover:text-gray-700">About Us</span></a>
+				<span class="mr-6 text-lg underline hover:text-gray-700">About Us</span>
 				<span class="mr-6 text-lg underline hover:text-gray-700">FAQ</span>
 				<span class="mr-6 text-lg underline hover:text-gray-700">Contact Us</span>
 				<a href="{% url 'login' %}"><span class="mr-6 text-lg underline hover:text-gray-700">Login</span></a>
-				<a href="{% url 'register' %}"><button class="mr-6 text-lg border p-2 font-bold hover:bg-white hover:text-gray-700">Sign Up</button></a>
+				<a href="{% url 'register' %}"><button class="mr-6 text-lg border p-2 font-bold  hover:text-gray-700">Sign Up</button></a>
 			</div>
 			</div>
-			<div class="mt-28 lg:mt-40 m-2 md:ml-56 md:mr-56  ">
-			<span class="text-white font-bold text-3xl">Welcome , looking for a place to rent ?</span>
+			<div class="mt-32 m-2 md:ml-56 md:mr-56  ">
+			<span class="text-white font-bold text-3xl">Find places to rent ...</span>
 			<form action="." method="POST">{% csrf_token %}
-			<div class="mt-4 md:flex w-full">
+			<div class="mt-4 flex w-full">
 				
-				<select name="type" class="border rounded border bg-white  mb-4 block md:inline w-full md:w-4/6 p-1 h-12" >
+				<select name="type" class="border rounded border bg-white  mb-4 inline w-4/6 p-1 h-12" >
 					<optgroup  class="font-bold bg-white" label="Hostels">
 						<option class="text-gray-100"> Select space type </option>
-						<option value="1">1 in A room (small)</option>
-						<option value="2">2 in A room (small)</option>
-						<option value="2">2 in A room (small)</option>
+						<option value="1">1 in A room (Small)</option>
+						<option value="1B">1 in A room (Big)</option>
+						<option value="2S">2 in A room (small)</option>
+						<option value="2B">2 in A room (small)</option>
 					</optgroup>
 					<optgroup label="Apartments">
 						
 						<option>1 Bedroom</option>
-						<option>2 Bedrooms</option>	
+						<option>2 Bedrooms</option>
 						<option>3 Bedrooms</option>
 						<option>1 Bedrooms + kitchen </option>
 						<option>2 Bedrooms + kitchen </option>
@@ -44,18 +45,14 @@
 					</optgroup>
 				</select>
 
-				<select name="location" class="rounded border h-12 p-2 w-full md:w-3/6 md:ml-2 bg-white">
-					<optgroup>
-						<option value="all">All Locations</option>
-					{% for area in areas %}
-					<option value="{{ area.id }}">{{ area }}</option>
-					{% endfor %}
-					</optgroup>
+				<select class="rounded border h-12 p-2 w-3/6 ml-2 bg-white">
+					<option>Location</option>
+					<option>HO</option>
 				</select>
 
 			</div>
-			<div class="items-center self-center lg:w-2/3 mt-6 lg:ml-48">
-				<button class="rounded bg-blue-600 p-2 h-10 text-white w-full hover:bg-white hover:text-blue-900 md:w-5/6">SEARCH</button>
+			<div class="items-center self-center lg:w-2/3 lg:ml-48">
+				<button class="rounded bg-blue-600 p-2 h-10 text-white w-full md:w-5/6">SEARCH</button>
 			</div>
 		</form>
 		</div>
@@ -63,13 +60,7 @@
 		<section class="md:ml-24 md:mr-24">
 		<section class="p-2 ">
 			<div class="border-b p-2">
-				<span class="text-lg font-extrabold">
-					{% if results %}
-						{{ listings.count }} Result{{ listings.count|pluralize }} found 
-					{% else %}
-						Available Places near you
-					{% endif %}
-				</span>
+				<span class="text-lg font-extrabold">Available Places in Ho</span>
 			</div>
 			<div class="p-2 content-center grid gap-4  grid-cols-1 md:grid-cols-2 lg:grid-cols-4 mt-2">
 				{% for listing in listings %}
@@ -87,18 +78,12 @@
 				 	</div>
 				 	
 				 	<div class="text-sm p-2  bg-white"><!-- card bottom -->
-				 	<div class="w-full block pb-2 mt-2">
-				 		<div class="block flex">
-				 			<div class="mb-2">
-				 		<span class="font-bold pb-2 w-full"><svg viewBox="0 0 20 20" fill="currentColor" class="star w-6 h-6 text-blue-500 inline fill-current"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg> {{ listing.total_rating }} ({{listing.review.count}})</span>
-						<span class="block "></span>
-							</div>
-						
-					</div>
-						<div class="">
-				 		<a href="{{ listing.get_absolute_url }}"><span class="block font-bold">{{ listing.structure.name }} |{{ listing.name }}</span></a>
+				 	<div class="w-full block pb-2">
+				 		<span class="block font-bold pb-2"><svg viewBox="0 0 20 20" fill="currentColor" class="star w-6 h-6 text-blue-500 inline"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg> {{ listing.total_rating }} ({{listing.review.count}})</span>
+
+				 		<span class="block font-bold">{{ listing.structure.name }} |{{ listing.name }}</span>
 				 		<span class="text-sm text-gray-600">{{listing.description|truncatewords:"9" }}</span>
-				 		</div>
+				 		
 
 				 	</div>
 				 	<div class="">		
@@ -121,14 +106,6 @@
 				 			</div>
 				 		</div>
 				 			{% endif %}
-				 		</div>
-				 		<div class="border flex bg-blue-700 rounded-lg mt-2 p-2 text-white">
-				 			<div class="w-1/5">
-				 				<svg viewBox="0 0 20 20" fill="currentColor" class="share w-6 h-6 ml-6 mr-6 "><path d="M15 8a3 3 0 10-2.977-2.63l-4.94 2.47a3 3 0 100 4.319l4.94 2.47a3 3 0 10.895-1.789l-4.94-2.47a3.027 3.027 0 000-.74l4.94-2.47C13.456 7.68 14.19 8 15 8z"></path></svg>
-				 			</div>
-				 			<div class="ml-4">
-				 				<a href="{{listing.get_absolute_url }}"><span class="text-lg font-bold">Share space</span></a>
-				 			</div>
 				 		</div>
 				 	</div>
 				 	

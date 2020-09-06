@@ -8,4 +8,5 @@ urlpatterns = [
 	path('add/listing/', add_listing, name="add_listing"),
 	path('add/room/', add_room, name="add_room"),
 	path('add/others/', add_others, name="add_others"),
+	path('add/place/', add_place, name="add_place"),
 ]

@@ -6,8 +6,9 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+	<link rel="stylesheet" href="{% static 'css/ionicons.min.css' %}">
 </head>
-<body style="background-color:#fdfdfd; color:#3c3a3a" >
+<body >
 	{% block content %}
 
 	{% endblock %}
@@ -35,19 +36,44 @@
 		}
 
 		function load(){
-			document.getElementById("more").className = "border shadow h-full mb-2 md:mr-2 rounded-lg";
+			document.getElementById("more").className = "border shadow h-full mb-2 md:mr-2 rounded-lg ";
 		}
 
 		function hide(){
 			document.getElementById("signup").className = "hidden";
 		}
+
+		function hide_form(){
+			document.getElementById("complete_signup").className = "hidden";
+		}
+
+		function hide_form_2(){
+			document.getElementById("login").className = "hidden";
+		}
+
+		function show_login_form(){
+			closeNav();
+			document.getElementById("login").className = "h-full bg-black bg-opacity-75 w-full fixed rounded-lg";
+		}
+
 		function view(){
 			closeNav();
-			document.getElementById("signup").className = "h-full bg-black bg-opacity-75 w-full fixed ";
+			document.getElementById("signup").className = "h-full bg-black bg-opacity-75 w-full fixed rounded-lg";
 		}
 		function add(){
 			document.getElementById("bell").innerHTML = "Added to watchlist";
 		}
+		function expand(){
+			document.getElementById("start").className = "hidden";
+		}
+
+		function final(){
+			hide();
+			closeNav();
+			document.getElementById("complete_signup").className = "h-full bg-black bg-opacity-75 w-full fixed rounded-lg";
+		}
+
+	
 		function drop(){
 			let element = document.getElementById("dropdown");
 			if(element.className == "hidden"){

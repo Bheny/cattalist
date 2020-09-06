@@ -16,3 +16,6 @@ def add_room(request):
 
 def add_others(request):
 	return render (request, 'dashboard/add_others.html', {})
+
+def add_place(request):
+	return render (request, 'dashboard/add_place.html', {})

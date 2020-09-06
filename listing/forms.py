@@ -8,9 +8,9 @@ OPTIONS = [
 ]
 
 RATES = [
-	('YEAR','Yr'),
-	('MONTH','Mon'),
-	('SEMESTER','Sem'),
+	('Yr','Yr'),
+	('Mon','Mon'),
+	('Sem','Sem'),
 ]
 
 class PolicyAdminForm(forms.ModelForm):
@@ -26,4 +26,4 @@ class RoomAdminForm(forms.ModelForm):
 	class Meta:
 		model = Room
 		#fields = ['image','name','slug','description','area','town','region','available','places','owner','amenities','digital_address',]
-		fields = ['structure','image','name','slug','available','price','description','max_quantity','rate',]
+		fields = ['structure','image','name','slug','available','price','description','location','max_quantity','rate',]

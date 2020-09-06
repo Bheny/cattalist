@@ -27,7 +27,6 @@ class Place(models.Model):
 	def total_rating(self):
 			from .models import Place
 			review = Place.objects.get(id=self.id)
-
 			rating = (1*review.star_1 + 2*review.star_2 + 3*review.star_3 + 4*review.star_4 + 5*review.star_5)  
 			sum_n  = (review.star_1 + review.star_2 +review.star_3+ review.star_4 +review.star_5 )
 			total = 0
@@ -94,6 +93,7 @@ class Listing_Review(models.Model):
 	body = models.TextField()
 	created_at = models.DateTimeField(auto_now_add=True)
 	updated_at = models.DateTimeField(auto_now=True)
+
 	def __str__(self):
 		return self.user.username
 
@@ -113,7 +113,9 @@ class Room(models.Model):
 	slug = models.SlugField(max_length=255, unique=True, db_index=True, help_text='Unique value for room page URL, created from name.')
 	available = models.BooleanField()
 	price = models.PositiveIntegerField(default=0)
+	rate = models.CharField(max_length=255,default="Mon")
 	description = models.TextField(blank=True)
+	location = models.ForeignKey(Area, related_name="room_area", on_delete=models.DO_NOTHING)
 	max_quantity = models.PositiveIntegerField(default=1)
 	created = models.DateTimeField(auto_now_add=True)
 	updated = models.DateTimeField(auto_now=True)

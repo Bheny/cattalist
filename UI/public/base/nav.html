@@ -63,16 +63,18 @@
 			 	{% if user.is_authenticated %}
 			 	<div class="flex border-b pb-2"><a href="{% url 'logout' %}">
 			 	<button class="w-1/5"><svg viewBox="0 0 20 20" fill="currentColor" class="logout w-6 h-6"><path fill-rule="evenodd" d="M3 3a1 1 0 00-1 1v12a1 1 0 102 0V4a1 1 0 00-1-1zm10.293 9.293a1 1 0 001.414 1.414l3-3a1 1 0 000-1.414l-3-3a1 1 0 10-1.414 1.414L14.586 9H7a1 1 0 100 2h7.586l-1.293 1.293z" clip-rule="evenodd"></path></svg></button>
-			 	<span onclick="view();" class="font-bold text-lg">LOGOUT</span></a>
+			 	<span class="font-bold text-lg">LOGOUT</span></a>
 			 </div>
 			 {% else %}
+			 <a href="{% url 'login' %}">
 			 <div class="flex mt-4 border-b pb-2 block">
 			 	<button class="w-1/5"><svg viewBox="0 0 20 20" fill="currentColor" class="login w-6 h-6"><path fill-rule="evenodd" d="M3 3a1 1 0 011 1v12a1 1 0 11-2 0V4a1 1 0 011-1zm7.707 3.293a1 1 0 010 1.414L9.414 9H17a1 1 0 110 2H9.414l1.293 1.293a1 1 0 01-1.414 1.414l-3-3a1 1 0 010-1.414l3-3a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg></button>
-			 	<span class="font-bold text-lg">LOGIN</span>
+			 	<span  class="font-bold text-lg">LOGIN</span>
 			 </div>
+			</a>
 			 <div class="flex mt-4 border-b pb-2 ">
 			 	<button class="w-1/5"><svg viewBox="0 0 20 20" fill="currentColor" class="login w-6 h-6"><path fill-rule="evenodd" d="M3 3a1 1 0 011 1v12a1 1 0 11-2 0V4a1 1 0 011-1zm7.707 3.293a1 1 0 010 1.414L9.414 9H17a1 1 0 110 2H9.414l1.293 1.293a1 1 0 01-1.414 1.414l-3-3a1 1 0 010-1.414l3-3a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg></button>
-			 	<span onclick="view();" class="font-bold text-lg">SIGN UP</span>
+			 	<span onclick="final();" class="font-bold text-lg">SIGN UP</span>
 			 </div>
 			 {% endif %}
 				</div>
@@ -83,22 +85,55 @@
 			 {% if user.is_staff %}
 			  <div class="flex mt-4 border-b pb-2"><a href="{% url 'dashboard:home' %}">
 			 	<button class="w-1/5"><svg viewBox="0 0 20 20" fill="currentColor" class="eye w-6 h-6"><path d="M10 12a2 2 0 100-4 2 2 0 000 4z"></path><path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd"></path></svg></button>
-			 	<span  class="font-bold text-lg">ADMIN PANEL</span>
+			 	<span  class="font-bold text-lg">ADMIN PANEL</span></a>
 			 </div>
-			 {% endif %}
+			 {% endif %} 
 			 
 		</div>
 		<div class="hidden" id="signup">
-			<div class=" h-full mt-40 w-full border rounded-tl-lg rounded-tr-lg bg-gray-200">
-				<div class="p-2 ">
+			<div class=" h-full mt-32 w-full border rounded-tl-lg rounded-tr-lg bg-gray-200">
+				<div class="p-2 border-b" id="start">
 					<svg viewBox="0 0 20 20" fill="currentColor" onclick="hide();" class="chevron-down w-8 h-8 block"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
 					<input class="p-2 block border w-full" type="text" name="" placeholder="Enter your phone number">
-					<button class="bg-blue-900 text-white w-full mt-2 font-bold p-2 border rounded" onclick="hide();">Sign Up</button>
+					<button class="bg-blue-900 text-white w-full mt-2 font-bold p-2 border rounded" onclick="final();">Sign Up</button>
+				</div>
+				<span>Enter the 4-Digit code sent to the phone number</span>
+				<div class="m-6 p-2 grid grid-cols-4 w-full">
+					<input type="text" name="" class="rounded-lg border h-16 w-16 text-3xl font-bold text-center p-2">
+					<input type="text" name="" class="rounded-lg border h-16 w-16 text-3xl font-bold text-center p-2">
+					<input type="text" name="" class="rounded-lg border h-16 w-16 text-3xl font-bold text-center p-2">
+					<input type="text" name="" class="rounded-lg border h-16 w-16 text-3xl font-bold text-center p-2">
 				</div>
 				<hr>
 				
 			</div>
 		</div>
+		<div class="hidden" id="complete_signup">
+			<div class=" h-full mt-12 w-full border rounded-tl-lg rounded-tr-lg bg-gray-200">
+				<div class="p-2 border-b" id="start">
+					<svg viewBox="0 0 20 20" fill="currentColor" onclick="hide_form();" class="chevron-down w-8 h-8 block"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+					<form action="{% url 'register' %}" method="POST">{% csrf_token %}
+					
+					<input class="p-2 block border mb-4 w-full" type="text" name="username" placeholder="Enter your Username">
+
+					<input class="p-2 block border mb-4 w-full" type="text" name="email" placeholder="Enter your email">
+					<div class="flex border h-10 mb-2 relative">
+
+					<input id="passwd" class="p-2 w-full" type="password" name="password1" placeholder="Enter your Password">
+					<svg onclick="display();" viewBox="0 0 20 20" fill="currentColor" class="eye w-8 h-full float-right bg-white"><path d="M10 12a2 2 0 100-4 2 2 0 000 4z"></path><path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd"></path></svg>
+					</div>
+					<input class="p-2 block border w-full" type="password" name="password2" placeholder="Confirm Password">
+					
+					
+					<button class="bg-blue-900 text-white w-full mt-2 font-bold p-2 border rounded">Sign Up</button>
+				</form>
+				</div>
+				
+				
+			</div>
+		</div>
+
+
 		<!-- Notifications -->
 		<div id="notify" class="hidden">
 			<ul>

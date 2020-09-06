@@ -4,10 +4,25 @@
 {% block content %}
 
 	{% include 'base/nav.html' %}
-	<main>
-		<section>
-			<div class="pt-24 fixed mt-64">
-				<div class="w-full fixed bg-gray-100 h-full flex border shadow-lg p-2">
+	<div class="hidden  border mb-4 lg:flex bg-blue-900">
+			<div class="p-4 ml-6 3/5 mr-24">
+				<span class="font-bold text-lg text-white">ℂ𝔸𝕋𝕋𝔸𝕃𝕀𝕊𝕋.ℂ𝕆𝕄</span>
+			</div>
+			<div class="p-2 ml-40">
+				<input type="search" name="" class="border rounded-full focus:outline-none p-2" placeholder="Search for space...">
+			</div>
+			<div class="p-2 text-white">
+				
+				<a href="{% url 'home' %}"><span class="mr-6 text-lg underline hover:text-gray-700">Home</span></a>
+				<a href="{% url 'about' %}"><span class="mr-6 text-lg underline hover:text-gray-700">About Us</span></a>
+				<span class="mr-6 text-lg underline hover:text-gray-700">FAQ</span>
+				<span class="mr-6 text-lg underline hover:text-gray-700">Contact Us</span>
+				<a href="{% url 'login' %}"><span class="mr-6 text-lg underline hover:text-gray-700">Login</span></a>
+				<a href="{% url 'register' %}"><button class="mr-6 text-lg border p-2 font-bold hover:bg-white hover:text-gray-700">Sign Up</button></a>
+			</div>
+	</div>
+	<main class="lg:pl-4 lg:pr-4 bg-gray-100">
+		<div class="w-full bg-gray-100 flex border fixed bottom-0 mb-0 shadow-lg p-2 lg:hidden">
 					<div class="w-3/5">
 						<span class="block"><svg viewBox="0 0 20 20" fill="currentColor" class="tag w-6 h-6 text-blue-500 inline"><path fill-rule="evenodd" d="M17.707 9.293a1 1 0 010 1.414l-7 7a1 1 0 01-1.414 0l-7-7A.997.997 0 012 10V5a3 3 0 013-3h5c.256 0 .512.098.707.293l7 7zM5 6a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd"></path></svg><b>GHC 250.00</b>/ mon</span>
 						<span class="font-bold"><svg viewBox="0 0 20 20" fill="currentColor" class="star w-6 h-6 text-blue-500 inline"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>{{ room.total_rating }} ({{ room.structure.count }}) </span>
@@ -16,14 +31,33 @@
 						<button class="bg-blue-700 rounded shadow-lg h-16 font-bold text-white p-4 w-32 text-lg">RENT IT</button>
 					</div>
 				</div>
-			</div>
-			
-			<div class="w-full p-2">
-				<div class="h-full flex overflow-x-scroll"><!-- card head -->
-				 		<img src="{{room.image.url}}" class="w-full h-56">
-				 		<img src="{{room.image.url}}" class="w-full h-56">
-				 		<img src="{{room.image.url}}" class="w-full h-56">
+		<!--div class=" border h-screen fixed  w-full lg:hidden" >
+				
+		</div-->
+		<section>			
+			<div class="w-full lg:pl-32 lg:pr-32">
+				<div class="h-64" style="height: 300px;"><!-- card head -->
+				 	<div class="flex overflow-x-scroll h-full">
+				 		<img src="{{ room.image.url }}" class="w-full  object-cover">
+				 		<img src="{{ room.image.url }}" class="w-full  object-cover">
+				 		<img src="{{ room.image.url }}" class="w-full  object-cover">
+				 	</div>
+				 	
+				 		
 				 </div>
+
+				 <div class=" mt-2  border rounded-lg">
+				 	<div class="flex overflow-x-scroll">
+				 	<img src="{{ room.image.url }}" class="w-16 h-16  object-cover ml-1">
+				 	<img src="{{ room.image.url }}" class="w-16 h-16  object-cover ml-1">
+				 	<img src="{{ room.image.url }}" class="w-16 h-16  object-cover ml-1">
+				 	<img src="{{ room.image.url }}" class="w-16 h-16  object-cover ml-1">
+				 	<img src="{{ room.image.url }}" class="w-16 h-16  object-cover ml-1">
+				 	<img src="{{ room.image.url }}" class="w-16 h-16  object-cover ml-1">
+				 </div>
+				 </div>
+				 <div class="lg:grid lg:grid-cols-3">
+				 <div class=" p-2 lg:p-4 lg:col-span-2">
 				 <div class="border-b pb-4">
 				 	<span class="text-2xl block mt-2 font-extrabold text-gray-800">{{ room.structure }}, {{ room.name }}</span>
 				 	<span class="block"><svg viewBox="0 0 20 20" fill="currentColor" class="heart w-6 h-6 text-blue-500 inline"><path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd"></path></svg>
@@ -61,7 +95,7 @@
 				 		<span class="text-sm text-gray-700 block mb-2">Room is good size and overlooks gar...</span>
 				 		<span class="text-sm font-bold mb-4">Show more > </span>
 				 		<div class="items-center self-center pl-16 pr-16 md:pl-64 md:pr-64 mt-4">
-				<button class="rounded bg-blue-600 p-2 h-10 text-white w-full md:w-2/3 hover:bg-white hover:text-blue-600 border-blue-600 border">Contact Owner </button>
+				<button class="rounded bg-blue-600 p-2 h-10 text-white w-full hover:bg-white hover:text-blue-600 border-blue-600 border">Contact Owner </button>
 			</div>
 				 </div >
 				 <div class="p-2 border-b">
@@ -114,7 +148,7 @@
 				 			{{ review.body }}
 				 		</div>
 				 		<div class="items-center self-center pl-12 pr-12 md:pl-64 md:pr-64 mt-4">
-							<button class="rounded bg-blue-600 p-2 h-10 text-white w-full md:w-2/3 hover:bg-white hover:text-blue-600 border-blue-600 border">Show all {{reviews.count }} reviews</button>
+							<button class="rounded bg-blue-600 p-2 h-10 text-white w-full hover:bg-white hover:text-blue-600 border-blue-600 border">Show all {{reviews.count }} reviews</button>
 						</div>
 				 	</div>
 				 	{% endfor %}
@@ -141,7 +175,7 @@
 				    	<span class="text-sm text-gray-700">You must try and maintain distance where possible</span>
 				    </div>
 				    <div class="items-center self-center pl-12 pr-12 md:pl-64 md:pr-64 mt-4">
-							<button class="rounded bg-blue-600 p-2 h-10 text-white w-full md:w-2/3 hover:bg-white hover:text-blue-600 border-blue-600 border font-bold">Contact Owner</button>
+							<button class="rounded bg-blue-600 p-2 h-10 text-white w-full hover:bg-white hover:text-blue-600 border-blue-600 border font-bold">Contact Owner</button>
 					</div>
 					<div class="p-2">
 						<span class="text-xs text-gray-700">
@@ -171,7 +205,30 @@
 				  	<span class="text-sm text-gray-800 underline">Report this listing</span>
 				  </div>
 			</div>
+
+			<div class="hidden lg:block">
+				<div class="border rounded-lg shadow-lg  w-full mt-6">
+					<div class="flex p-4 w-full">
+						<div class="w-2/3"><span class="text-lg font-bold">GHC {{ room.price }} </span>  / {{ room.rate }} </div>
+						<div> <svg viewBox="0 0 20 20" fill="currentColor" class="star w-6 h-6 text-blue-500 inline"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>{{ room.total_rating }} ({{ room.structure.count }})</div>
+					</div>
+					<div class="p-6">
+						<div class="border border-black p-2 rounded-lg">
+						<input type="date" name="" class="border-r border-black">
+						<input type="time" name="" class="">
+						</div>
+					</div>
+					<div class="p-4">
+						<button class="w-full rounded-lg p-2 text-lg text-white bg-blue-900">
+							Book Appointment
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		</div>
 		</section>
+		
 	</main>
 
 	{% include 'base/footer.html' %}
