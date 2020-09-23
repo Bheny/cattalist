@@ -1,37 +1,41 @@
 
 {% extends 'base/base.html' %}
 {% load static %}
+{% load thumbnail %}
 {% block content %}
 
 	{% include 'base/nav.html' %}
 	<main class="h-full ">
-		<div class="h-full md:pb-32 border-b p-4 pl-2 pb-10 sm:bg-cover bg-blue-900" ><!-- banner -->
+		<div class="h-full md:pb-32 border-b p-4 pl-2 pb-10 bg-cover bg-blue-900 rounded-br-lg rounded-bl-lg" style="background-image: url('/static/imgs/cbg2.jpg');"><!-- banner -->
 			<div class="h-12">
 				<div class="hidden lg:block lg:w-2/5 h-12 p-2 float-left text-white ">
 					<span class="font-extrabold text-3xl">ℂ𝔸𝕋𝕋𝔸𝕃𝕀𝕊𝕋.ℂ𝕆𝕄</span>
+
 				</div>
-			
-			<div class="hidden lg:block lg:w-3/5 h-12 p-2 pl-40 float-right text-white font-bold ">
+			<div class="text-center">
+				<span class="text-white font-extrabold text-4xl"></span>
+			</div>
+			<div class="hidden lg:block lg:w-3/5 h-16 p-2 pl-40 float-right text-white font-bold bg-black bg-opacity-25 ">
 				
 				<a href="{% url 'home' %}"><span class="mr-6 text-lg underline hover:text-gray-700">Home</span></a>
 				<a href="{% url 'about' %}"><span class="mr-6 text-lg underline hover:text-gray-700">About Us</span></a>
 				<span class="mr-6 text-lg underline hover:text-gray-700">FAQ</span>
 				<span class="mr-6 text-lg underline hover:text-gray-700">Contact Us</span>
 				<a href="{% url 'login' %}"><span class="mr-6 text-lg underline hover:text-gray-700">Login</span></a>
-				<a href="{% url 'register' %}"><button class="mr-6 text-lg border p-2 font-bold hover:bg-white hover:text-gray-700">Sign Up</button></a>
+				<a href="{% url 'register' %}"><button class="mr-6 text-lg border-2 border-blue-800 p-2 font-bold hover:bg-white text-gray-700">Sign Up</button></a>
 			</div>
 			</div>
 			<div class="mt-28 lg:mt-40 m-2 md:ml-56 md:mr-56  ">
-			<span class="text-white font-bold text-3xl">Welcome , looking for a place to rent ?</span>
+			<span class="text-white font-extrabold text-3xl lg:text-4xl">Welcome , looking for a place to rent ?</span>
 			<form action="." method="POST">{% csrf_token %}
 			<div class="mt-4 md:flex w-full">
 				
-				<select name="type" class="border rounded border bg-white  mb-4 block md:inline w-full md:w-4/6 p-1 h-12" >
+				<select name="type" class="border rounded border bg-white  mb-4 block md:inline w-full md:w-4/6 p-1 h-12" required>
 					<optgroup  class="font-bold bg-white" label="Hostels">
-						<option class="text-gray-100"> Select space type </option>
+						<option value="all"> Select space type </option>
 						<option value="1">1 in A room (small)</option>
 						<option value="2">2 in A room (small)</option>
-						<option value="2">2 in A room (small)</option>
+						<option value="3">2 in A room (small)</option>
 					</optgroup>
 					<optgroup label="Apartments">
 						
@@ -44,7 +48,7 @@
 					</optgroup>
 				</select>
 
-				<select name="location" class="rounded border h-12 p-2 w-full md:w-3/6 md:ml-2 bg-white">
+				<select name="location" class="rounded border h-12 p-2 w-full md:w-3/6 md:ml-2 bg-white" required="true">
 					<optgroup>
 						<option value="all">All Locations</option>
 					{% for area in areas %}
@@ -65,36 +69,61 @@
 			<div class="border-b p-2">
 				<span class="text-lg font-extrabold">
 					{% if results %}
-						{{ listings.count }} Result{{ listings.count|pluralize }} found 
+						{{ listings.count }} Result{{ listings.count|pluralize }} found <br>
+						
 					{% else %}
 						Available Places near you
 					{% endif %}
 				</span>
 			</div>
+			<div class="flex overflow-x-scroll p-2 text-gray-700">
+						<span class="border rounded-lg p-2 mr-2">All</span>
+						<span class="border rounded-lg p-2 mr-2">Mansion</span>
+						<span class="border rounded-lg p-2 mr-2">Bungalow</span>
+						<span class="border rounded-lg p-2 mr-2">Hostel</span>
+						<span class="border rounded-lg p-2 mr-2">flat</span>
+						<span class="border rounded-lg p-2 mr-2">Mansion</span>
+						<span class="border rounded-lg p-2 mr-2">Bungalow</span>
+						<span class="border rounded-lg p-2 mr-2">Hostel</span>
+			</div>
+			
 			<div class="p-2 content-center grid gap-4  grid-cols-1 md:grid-cols-2 lg:grid-cols-4 mt-2">
 				{% for listing in listings %}
-				 <div class="border shadow-lg h-full mb-2 md:mr-2 rounded-lg">
+				 <div class="border shadow-xl h-full mb-2 md:mr-2 rounded-lg">
 				 	
-				 	<div class="h-40"><!-- card head -->
+				 	<div class="h-40 rounded-lg"><!-- card head -->
 				 		<a href="{{ listing.get_absolute_url }}">
 				 			<div class="flex overflow-x-scroll">
-				 			<img src="{{ listing.image.url }}" class="w-full   h-40 object-cover">
-				 			<img src="{{ listing.image.url }}" class="w-full  h-40 object-cover">
-				 			<img src="{{ listing.image.url }}" class="w-full h-40 object-cover">
+				 			{% thumbnail listing.image "300" as im %}
+				 			<img src="{{ im.url }}" class="w-full   h-40 object-cover">
+				 			<img src="{{ im.url }}" class="w-full  h-40 object-cover">
+				 			<img src="{{ im.url }}" class="w-full h-40 object-cover">
+				 			{% endthumbnail %}
 				 		</div>
 				 		</a>
 				 		
 				 	</div>
 				 	
+				 	
 				 	<div class="text-sm p-2  bg-white"><!-- card bottom -->
 				 	<div class="w-full block pb-2 mt-2">
-				 		<div class="block flex">
-				 			<div class="mb-2">
-				 		<span class="font-bold pb-2 w-full"><svg viewBox="0 0 20 20" fill="currentColor" class="star w-6 h-6 text-blue-500 inline fill-current"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg> {{ listing.total_rating }} ({{listing.review.count}})</span>
-						<span class="block "></span>
+				 		<div class="inline-block flex container">
+				 			<div class="mb-1 flex w-full">
+				 				<span class="font-bold pb-2 w-4/5">
+						 			<i class="ion-ios-star text-xl text-blue-600"></i>
+						 			<i class="ion-ios-star-half text-xl text-blue-600"></i>
+						 			<i class="ion-ios-star-outline text-xl text-blue-600"></i>
+						 			<i class="ion-ios-star-outline text-xl text-blue-600"></i>
+						 			<i class="ion-ios-star-outline text-xl text-blue-600"></i>
+						 			
+				 					 {{ listing.total_rating }} ({{listing.review.count}})
+				 				</span>
+								<span class="block float-right">
+										<i class="ion-ios-eye text-blue-600 text-2xl"> 32</i> 
+								</span>
 							</div>
 						
-					</div>
+						</div>
 						<div class="">
 				 		<a href="{{ listing.get_absolute_url }}"><span class="block font-bold">{{ listing.structure.name }} |{{ listing.name }}</span></a>
 				 		<span class="text-sm text-gray-600">{{listing.description|truncatewords:"9" }}</span>
@@ -122,7 +151,7 @@
 				 		</div>
 				 			{% endif %}
 				 		</div>
-				 		<div class="border flex bg-blue-700 rounded-lg mt-2 p-2 text-white">
+				 		<div class="lg:hidden border flex bg-blue-700 rounded-lg mt-2 p-2 text-white">
 				 			<div class="w-1/5">
 				 				<svg viewBox="0 0 20 20" fill="currentColor" class="share w-6 h-6 ml-6 mr-6 "><path d="M15 8a3 3 0 10-2.977-2.63l-4.94 2.47a3 3 0 100 4.319l4.94 2.47a3 3 0 10.895-1.789l-4.94-2.47a3.027 3.027 0 000-.74l4.94-2.47C13.456 7.68 14.19 8 15 8z"></path></svg>
 				 			</div>

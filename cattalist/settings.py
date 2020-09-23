@@ -25,7 +25,7 @@ SECRET_KEY = ')go!msz(jsd741@(59hehct)3(4esu94*f=(c+^0w6e!afbiy+'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['10.42.0.1','192.168.42.56','192.168.42.224','192.168.42.199','localhost','192.168.1.2']
+ALLOWED_HOSTS = ['10.42.0.1','192.168.42.56','192.168.42.224','192.168.43.199','localhost','192.168.1.2','192.168.42.230']
 
 
 # Application definition
@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'dashboard',
     'location',
     ## Third parties
+    'sorl.thumbnail',
 
 ]
 

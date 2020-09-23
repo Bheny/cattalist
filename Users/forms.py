@@ -10,7 +10,7 @@ from .models import MyUser
 #YEAR_CHOICES = [('1999','1999'),('2000','2000'),('2001','2001')]
 class UserRegisterForm(UserCreationForm):
 	
-	email = forms.EmailField()
+	#email = forms.EmailField()
 	#day	  = forms.IntegerField(widget=forms.Select(choices=DAY_CHOICES),)
 	#month = forms.CharField(widget=forms.Select(choices=MONTH_CHOICES),)
 	#year  = forms.IntegerField(widget=forms.Select(choices=YEAR_CHOICES),)
@@ -18,5 +18,5 @@ class UserRegisterForm(UserCreationForm):
 
 	class Meta:
 		model = User
-		fields = ['username','email','password1','password2']
+		fields = ['username','password1','password2']
 

@@ -1,0 +1,29 @@
+
+{% extends 'base/base.html' %}
+{% load static %}
+{% block content %}
+	<nav>
+		<div class="container">
+			<div class="float-right  mr-6">
+				<span class="text-6xl font-bold text-blue-600">#01</span>
+			</div>
+		</div>
+	</nav>
+	<main class="bg-blue-900 h-screen rounded-bl-full rounded-tr-full pt-32 shadow-2xl bg-cover" style="background-image: url('static/imgs/bg2.jpg');">
+		<div class="text-white p-2">
+			<div class="mb-16">
+			<h2 class="font-bold text-3xl">CATTALIST.COM</h2>
+			<h6 class="font-bold text-lg">Space renting made easy !!</h6>
+			</div>
+			<span class="text-2xl font-extrabold">
+				Enter your phone number and get alerted when Cattalist is ready for use
+			</span>
+			<div class="">
+				<form class="mt-4 flex" action="." method="POST">
+					<input type="text" name="phone" placeholder="your phone number" class="h-10 w-2/3 pl-1 rounded-l">
+					<button type="submit" class="bg-blue-700 p-1 text-sm w-full h-10 font-bold text-white rounded-r"> KEEP ME POSTED</button>
+				</form>
+			</div>
+		</div>
+	</main>
+{% endblock %}

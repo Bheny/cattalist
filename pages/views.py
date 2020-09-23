@@ -1,28 +1,18 @@
 from django.shortcuts import render
-from listing.models import Listing, Room
-from location.models import Area
+from .services import search, list_all
 # Create your views here.
-def home(request):
-	print(request.POST)
-	rooms = Room.objects.all()
-	result = False 
-	locations = Area.objects.all()
+def home(request,result=False ):
 	if request.method == 'POST':
-		Type = request.POST['type']
-		location = request.POST['location']
-		if location == "all":
-			rooms = Room.objects.filter(max_quantity=Type)
-			result = True
-		else:
-			rooms = Room.objects.filter(location=location).filter(max_quantity=Type)
-			result = True
-
-
-	return render(request, 'index.html',{'listings':rooms,'results':result,'areas':locations})
+		context = search(request.POST)
+	else:
+		context = list_all()
+	return render(request, 'index.html',context)
 
 
 
 def about(request):
 	return render(request, 'about.html', {})
 
+def landing(request):
+	return render(request, 'landing.html', {})
 

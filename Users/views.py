@@ -17,6 +17,7 @@ def register(request):
 		data= request.POST
 		print(data)
 		form = UserRegisterForm(data)
+
 		if form.is_valid():
 			new_user = form.save()
 			username = form.cleaned_data.get('username')
@@ -24,6 +25,7 @@ def register(request):
 			return redirect('login')
 		else:
 			messages.success(request, f'Error creating Account !!')
+			print("invalid")
 	else:
 		form = UserRegisterForm()
 	return render(request, 'register.html', {'form':form})	
