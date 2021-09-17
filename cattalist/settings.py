@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'notifications',
     'dashboard',
     'location',
+    'services',
     ## Third parties
     'sorl.thumbnail',
 
@@ -66,7 +67,7 @@ ROOT_URLCONF = 'cattalist.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR,'UI/public')],
+        'DIRS': [os.path.join(BASE_DIR,'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

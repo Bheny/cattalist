@@ -1,0 +1,153 @@
+{% extends 'listing/base.html' %}
+
+{% block content %}
+
+		<div class="h-12 bg-gray-200 border-b fixed mb-12 w-full container">
+			<div class="float-right block">
+				<div class="mt-2">
+				<span class="text-blue-800 text-lg float-right mr-8 font-bold">EXIT</span>
+			</div>
+			</div>
+			<div class=" mt-12 bottom-0 flex">
+				<div id="one" class="h-2 bg-blue-800 w-3 bottom-0 mb-0 border"></div>
+				<div id="two" class="h-2 bg-white w-3  border"></div>
+				<div id="three" class="h-2 bg-white w-3 border"></div>
+				<div class="h-2 bg-white w-3  border"></div>
+				<div class="h-2 bg-white w-3 border"></div>
+				<div class="h-2 bg-white w-3  border"></div>
+				<div class="h-2 bg-white w-3 border"></div>
+				<div class="h-2 bg-white w-3  border"></div>
+				<div class="h-2 bg-white w-3 border"></div>
+				<div class="h-2 bg-white w-3  border"></div>
+				<div class="h-2 bg-white w-3 border"></div>
+				<div class="h-2 bg-white w-3  border"></div>
+				<div class="h-2 bg-white w-3 border"></div>
+				<div class="h-2 bg-white w-3  border"></div>
+				<div class="h-2 bg-white w-3 border"></div>
+		</div>
+		</div>
+	
+	<main class="lg:grid lg:grid-cols-3">
+	
+		<div id="begin" class="col-span-1 p-6 h-screen">
+
+			<span class="block text-2xl text-gray-800 mt-10">Hi, {{ user.username }}! Lets get you started .</span>
+			<span  class="block text-sm text-gray-800 font-bold mt-8">1st Step</span>
+			<label for="type" class="block text-xl text-gray-800 mt-4">What kind of space do you have ?</label>
+			<div class="lg:flex">
+			<select class="p-2 border-gray-400 focus:hover:shadow mt-2 block">
+				<option>Chamber & Hall</option>
+				<option>Single Room Self Contain</option>
+				<option>2 Bedroom Apertment</option>
+				<option>Classroom</option>
+				<option>Park</option>
+				<option>Club</option>
+				<option>Pub</option>
+			</select>
+			<select class="p-2 border mt-2 lg:ml-2">
+				<option>Standard</option>
+				<option>Small</option>
+				<option>Large</option>
+			</select>
+		</div>
+			<a href="#next" onclick="fill('two');">
+			<button class="bg-blue-800 text-lg text-white p-2 rounded mt-4">Continue</button></a>
+		</div>
+
+		<div id="next">
+			<div class="p-4 h-screen" > 
+				<h2 class="text-2xl font-bold text-gray-800 mt-10">Where's your place located ? </h2>
+				<p class="text-lg text-gray-900">Guests will only get your exact address once they've booked a reservation.</p>
+
+				<button class="border-blue-600 border-2 p-3 mt-3 w-full rounded-lg text-blue-900 mb-4 font-bold">
+					<svg class="w-6 h-6 inline-block text-blue-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>Use Current Location
+				</button>
+				<hr>
+				<button onclick="showBox();" class="border-blue-600 border-2 p-3 mt-3 w-full rounded-lg text-blue-900 font-bold">
+					<svg class="w-6 h-6 inline-block text-blue-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>Use Digital Address
+				</button>
+				<div id="Digital" class="hidden">
+					<label class="block text-xl text-gray-800">Enter Your Digital</label>
+					<input class="border rounded-lg p-3 w-full">
+				</div>
+				<div class="mt-2">
+					<label class="block text-xl text-gray-800">Region</label>
+					<select class="border rounded-lg p-3 w-full">
+						<option>Volta</option>
+					</select>
+					<label class="block text-xl text-gray-800">City / Town</label>
+					<input class="border rounded-lg p-3 w-full">
+
+					<label class="block text-xl text-gray-800">Area</label>
+					<input class="border rounded-lg p-3 w-full">
+						
+					<label class="block text-xl text-gray-800">Street Address</label>
+					<input class="border rounded-lg p-3 w-full">
+					<span class="text-sm text-gray-600">House name/number + street/road</span>
+
+					<label class="block text-xl text-gray-800">Apt, Suite (optional)</label>
+					<input class="border rounded-lg p-3 w-full">
+				</div>
+				<div class="w-full  flex  mt-4 p-2 ">
+			<div class="w-1/2 p-2">
+				<a href="#begin">
+				<button class="p-2 text-xl font-bold text-blue-700"><svg class="w-6 h-6 inline-block" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>Back</button></a>
+			</div>
+			<div class="w-1/2 p-2">
+				<button class="float-right mr-4 p-2 bg-blue-700 text-white font-bold rounded-lg w-24">Next</button>
+			</div>
+		</div>
+			</div>
+		</div>
+		
+
+		<div id="next">
+			<div class="p-4 mt-64 h-screen" > 
+				<h2 class="text-2xl font-bold text-gray-800 mt-10">What Utilities do you offer ?</h2>
+				<p class="text-lg text-gray-900">These are just the usual utilities that guests expect, but you can add even more after you publish.</p>
+
+				<div class="mt-12">
+					<ul>
+						<li class="flex">
+							<div class="w-2/3 inline-block">
+								Essentials 
+							</div>
+							<div class="w-12 border bg-gray-300 h-12">
+								<input type="checkbox" name=""  class="border-white bg-white">
+							</div>
+							
+						</li>
+						<li class="flex">
+							<div class="w-2/3 inline-block">
+								Bathroom 
+							</div>
+							<div class="w-12 h-12">
+								<input type="checkbox" name=""  class="border-none">
+							</div>
+						</li>
+						<li class="flex">
+							<div class="w-2/3 inline-block">
+								Toilet 
+							</div>
+							<div class="w-12 h-12">
+								<input type="checkbox" name=""  class="border-none">
+							</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+
+	</main>
+{% endblock %}
+{% block script %}
+	<script type="text/javascript">
+		function showBox(){
+			document.getElementById('Digital').className = "block mt-4";
+		};
+
+		function fill(number){
+			document.getElementById(number).className = "h-2 bg-blue-800 w-3 border"
+		}
+	</script>
+{% endblock %}

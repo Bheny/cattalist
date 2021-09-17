@@ -1,0 +1,282 @@
+
+{% extends 'base/base.html' %}
+{% load static %}
+{% block content %}
+
+	{% include 'base/nav.html' %}
+	<div class="hidden  border mb-4 lg:flex bg-blue-900">
+			<div class="p-4 ml-6 3/5 mr-16">
+				<span class="font-bold text-lg text-white">ℂ𝔸𝕋𝕋𝔸𝕃𝕀𝕊𝕋.ℂ𝕆𝕄</span>
+			</div>
+			<div class="p-2 ml-24 w-56 mr-32  ">
+				<input type="search" name="" class="border rounded-full focus:outline-none p-2 w-full" placeholder="Search for space...">
+			</div>
+			<div class="p-2 text-white">
+				
+				<a href="{% url 'home' %}"><span class="mr-6 text-lg underline hover:text-gray-700">Home</span></a>
+				<a href="{% url 'about' %}"><span class="mr-6 text-lg underline hover:text-gray-700">About Us</span></a>
+				<span class="mr-6 text-lg underline hover:text-gray-700">FAQ</span>
+				<span class="mr-6 text-lg underline hover:text-gray-700">Contact Us</span>
+				<a href="{% url 'login' %}"><span class="mr-6 text-lg underline hover:text-gray-700">Login</span></a>
+				<a href="{% url 'register' %}"><button class="mr-6 text-lg border p-2 font-bold hover:bg-white hover:text-gray-700">Sign Up</button></a>
+			</div>
+	</div>
+	<main class=" ">
+		<div class="w-full bg-gray-100 flex border fixed bottom-0 mb-0 shadow-lg p-2 lg:hidden">
+					<div class="w-3/5">
+						<span class="block"><svg viewBox="0 0 20 20" fill="currentColor" class="tag w-6 h-6 text-blue-500 inline"><path fill-rule="evenodd" d="M17.707 9.293a1 1 0 010 1.414l-7 7a1 1 0 01-1.414 0l-7-7A.997.997 0 012 10V5a3 3 0 013-3h5c.256 0 .512.098.707.293l7 7zM5 6a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd"></path></svg><b>GHC {{room.price}}</b>/ {{ room.rate}}</span>
+						<span class="font-bold"><svg viewBox="0 0 20 20" fill="currentColor" class="star w-6 h-6 text-blue-500 inline"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>{{ room.total_rating }} ({{ room.structure.count }}) {{ room.structure.Type}}</span>
+					</div>
+					<div class="p-2 pt-0">
+						{% if room.structure.Type == "RTA" %}
+						{% if user.is_authenticated %}
+						<button class="bg-blue-700 rounded shadow-lg h-16 font-bold text-white p-4 w-32 text-lg">RENT IT</button>
+						{% else %}
+						<a href="{% url 'register' %}"><button class="bg-blue-700 rounded shadow-lg h-16 font-bold text-white p-4 w-32 text-lg">RENT IT</button></a>
+						{% endif %}
+						{% elif room.structure.Type == "GH" %}
+							{% if user.is_authenticated %}
+						<button class="bg-blue-700 rounded shadow-lg h-16 font-bold text-white p-4 w-32 text-lg">Check Availability</button>
+						{% else %}
+						<a href="{% url 'register' %}"><button class="bg-blue-700 rounded shadow-lg h-16 font-bold text-white p-4 w-32 text-lg">Check Availability</button></a>
+						{% endif %}
+						{% endif %}
+					</div>
+				</div>
+		<!--div class=" border h-screen fixed  w-full lg:hidden" >
+				
+		</div-->
+		<section>			
+			<div class="w-full lg:pl-24 lg:pr-24">
+				<div class="h-64" style="height: 300px;"><!-- card head -->
+				 	<div class="flex overflow-x-scroll h-full">
+				 		<img src="{{ room.image.url }}" class="w-full  object-cover">
+				 		<img src="{{ room.image.url }}" class="w-full  object-cover">
+				 		<img src="{{ room.image.url }}" class="w-full  object-cover">
+				 	</div>
+				 	
+				 		
+				 </div>
+
+				 <div class=" mt-2  border rounded-lg">
+				 	<div class="flex overflow-x-scroll">
+				 	<img src="{{ room.image.url }}" class="w-16 h-16  object-cover ml-1">
+				 	<img src="{{ room.image.url }}" class="w-16 h-16  object-cover ml-1">
+				 	<img src="{{ room.image.url }}" class="w-16 h-16  object-cover ml-1">
+				 	<img src="{{ room.image.url }}" class="w-16 h-16  object-cover ml-1">
+				 	<img src="{{ room.image.url }}" class="w-16 h-16  object-cover ml-1">
+				 	<img src="{{ room.image.url }}" class="w-16 h-16  object-cover ml-1">
+				 </div>
+				 </div>
+				 <div class="lg:grid lg:grid-cols-3">
+				 <div class=" p-2 lg:p-4 lg:col-span-2">
+				 <div class="border-b pb-4">
+				 	<span class="text-2xl block mt-2 font-extrabold text-gray-800">{{ room.structure }}, {{ room.name }}</span>
+				 	<span class="block"><svg viewBox="0 0 20 20" fill="currentColor" class="heart w-6 h-6 text-blue-500 inline"><path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd"></path></svg>
+					95 likes</span>
+					<span class="text-gray-700 underline"> <svg class="w-6 h-6 inline-block text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>{{room.structure.location }}, {{ room.structure.location.town }}, {{ room.structure.location.town.region }}</span>
+				 </div>
+				 <div class="p-2 pb-4 border-b"><!-- special notification area -->
+				 	<span><b>There are currently No tenants in the building</b> But 4 other students are interested in the space </span>
+				 </div>
+				 <div class="p-2 pb-4 border-b flex">
+				 	<div class="w-2/3">
+				 		<span class="text-sm block mb-4"><b>Private room in BOB COFFIE hostel owned by {{ room.structure.owner.profile.user.username }}</b></span>
+				 		
+				 		<span class="text-sm text-gray-800">
+				 			{{ room.max_quantity }} roomates - 1 bedroom - 1 bed - 2 shared baths
+				 		</span>
+				 	</div>
+				 	<div class="">
+				 		<img src="{{ room.structure.owner.profile.image.url }}" class="w-10 h-10 ml-10 rounded-full bg-cover">
+				 	</div>
+
+				 </div>
+				 <div class="flex p-2 border-b pb-4">
+				 	<div class="w-1/6">
+				 		<svg viewBox="0 0 20 20" fill="currentColor" class="plus-circle w-6 h-6"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V7z" clip-rule="evenodd"></path></svg>
+				 	</div>
+				 	<div class="ml-2"><!-- Policies of the host n apartment -->
+				 		<span class="text-gray-800 block"><b>Outstanding Relations</b></span>
+				 		<span class=" text-sm text-gray-700">9 recent tenants complimented Bernard for an outstanding landlord service & relations</span>
+				 	</div>
+				 </div>
+				 <div class=" p-2 border-b "><!-- Main description of the apartment -->
+				 		<span class="block mb-4">{{ room.description }}</span>
+				 		<span class="font-bold text-sm mb-2 block ">The space</span>
+				 		<span class="text-sm text-gray-700 block mb-2">Room is good size and overlooks gar...</span>
+				 		<span class="text-sm font-bold mb-4">Show more > </span>
+				 		<div class="items-center self-center pl-16 pr-16 md:pl-64 md:pr-64 mt-4">
+				<button class="rounded bg-blue-600 p-2 h-10 text-white w-full hover:bg-white hover:text-blue-600 border-blue-600 border">Contact Owner </button>
+			</div>
+				 </div >
+				 <div class="p-2 border-b">
+				 	<span class=" mb-2"><b>Amenities</b></span>
+				 	{% for amenity in room.structure.amenities.values %}
+				 	<div class="flex border-b p-2">
+				 		
+				 		<div class="w-5/6">
+				 			<span>{{ amenity.name }}</span>
+				 		</div>
+				 		<div class="w-1/6">
+				 			<span>Icon</span>
+				 		</div>
+				 	
+				 	</div>
+				 		{% endfor %}
+				 	<!--div class="items-center  self-center pl-12 pr-12 md:pl-64 md:pr-64 mt-4">
+				<button class="rounded bg-blue-600 p-2 h-12 text-white w-full md:w-2/3 hover:bg-white hover:text-blue-600 border-blue-600 border">Show all {{ rooms.structure.amenities.values.count }} amenities</button>
+			</div-->
+				 </div>
+				 <div class="border-b p-2">
+				 	<span class="mb-4"><b>Location</b></span>
+				 	<div class="rounded-lg mt-4 h-40 border">
+				 		<img src="" alt="map of place goes here ">
+				 	</div>
+				 	<div class="flex p-2">
+				 		<div class="w-5/6">
+				 			<span class="text-gray-700 font-bold text-sm block">Ho market</span>
+				 			<span class="text-gray-700 font-bold text-sm block">Melcom Shopping centre</span>
+
+				 		</div>
+				 		<div class="block">
+				 			<span class="text-gray-700 font-bold  text-sm block">1.5 km</span>
+				 			<span class="text-gray-700 font-bold  text-sm block">1.5 km</span>
+				 		</div>
+				 	</div>
+				 </div>
+				 <div class="border-b p-2">
+				 	<span class="text-lg text-gray-800 font-bold">{{room.total_rating}} ({{ reviews.count }} reviews )</span>
+				 	{% for review in reviews %}
+				 	<div class="p-2">
+				 		<div class="flex">
+				 			<img src="{{ review.user.profile.image.url }}" class="w-12 h-12 inline rounded-full">
+				 			<div>
+					 			<span class="block ml-2 font-bold"> {{ review.user.profile.user.username }} </span>
+					 			<span class="block ml-2 text-gray-700 text-sm"> {{ review.created_at }}</span>
+				 			</div>
+				 		</div>
+				 		<div class="p-2 ">
+				 			{{ review.body }}
+				 		</div>
+				 		<div class="items-center self-center pl-12 pr-12 md:pl-64 md:pr-64 mt-4">
+							<button class="rounded bg-blue-600 p-2 h-10 text-white w-full hover:bg-white hover:text-blue-600 border-blue-600 border">Show all {{reviews.count }} reviews</button>
+						</div>
+				 	</div>
+				 	{% endfor %}
+				 </div>
+				  <div class="border-b p-2">
+				  	<div class="p-2 pb-4 flex">
+					 	<div class="w-2/3">
+					 		<span class="text-lg block"><b>Owned by {{ room.structure.owner.profile.user.username }}</b></span>
+					 		<span class="text-sm text-gray-800">
+					 			{{ room.structure.owner.profile.created_at }}
+					 		</span>
+					 	</div>
+					 	<div class=" block">
+					 		<img src="{{ room.structure.owner.profile.image.url }}" class="w-10 h-10 ml-10 rounded-full">
+					 	</div>
+				 	</div>
+				 	<div class="p-2">
+
+					  	 <span class="font-bold block"><svg viewBox="0 0 20 20" fill="currentColor" class="star w-6 h-6 text-blue-500 inline fill-current"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg> {{comments.count }}   Reviews</span>
+					  	 <span class="font-bold"><svg class="w-6 h-6 inline-block text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg> Identity verified</span>
+				    </div>
+				    <div class="mt-4" >
+				    	<span class="font-bold block"> During your stay</span>
+				    	<span class="text-sm text-gray-700">You must try and maintain distance where possible</span>
+				    </div>
+				    <div class="items-center self-center pl-12 pr-12 md:pl-64 md:pr-64 mt-4">
+							<button class="rounded bg-blue-600 p-2 h-10 text-white w-full hover:bg-white hover:text-blue-600 border-blue-600 border font-bold">Contact Owner</button>
+					</div>
+					<div class="p-2">
+						<span class="text-xs text-gray-700">
+							To protect your payment ensure you hand in the cash to the Owner of the space or the desired account stated.
+						</span>
+					</div>
+				  </div>
+				  <div class="border-b p-2">
+				  	<span class="text-2xl font-bold block">House Rules</span>
+				  	
+				  	{% for rule in rules %}
+				  		<span class="text-sm text-gray-700">{{ rule.content }}</span>
+				  	{% endfor %}
+				  </div>
+				  <div class="border-b p-2">
+				  	<span class="text-2xl font-bold block">Safety & Property</span>
+				  	{% for item in Safety %}
+				  	<span class="text-sm text-gray-700">{{ item.content }}</span>
+				  	{% endfor %}
+				  </div>
+				  <div class="border-b p-2">
+				  	<span class="text-2xl font-bold block">Moving Policy</span>
+				  	<span class="text-sm text-gray-700">Anyone who wishes to move from a room or hostel should give a 1 week notice</span>
+				  </div>
+				  <div class="border-b p-2 mb-4">
+				  	<span class="text-sm font-bold"><svg class="w-6 h-6 text-red-600 inline-block" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 21v-4m0 0V5a2 2 0 012-2h6.5l1 1H21l-3 6 3 6h-8.5l-1-1H5a2 2 0 00-2 2zm9-13.5V9"></path></svg></span>
+				  	<span class="text-sm text-red-800 underline">Report this listing</span>
+				  </div>
+			</div>
+
+			<div class="hidden lg:block">
+				<div class="border rounded-lg shadow-lg  w-full mt-6">
+					<div class="flex p-4 w-full border-b">
+						<div class="w-2/3"><span class="text-lg font-bold">GHC {{ room.price }} </span>  / {{ room.rate }} </div>
+						<div> <svg viewBox="0 0 20 20" fill="currentColor" class="star w-6 h-6 text-blue-500 inline"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>{{ room.total_rating }} ({{ room.structure.count }})</div>
+					</div>
+					{% if room.structure.Type == "GH" %}
+					<div class=" flex p-2 gap-4 font-bold">
+						<div>
+							<input type="radio" name="Type" value="Standard" checked="true"> Standard
+						</div>
+						<div>
+							<input type="radio" name="Type" value="Premium"> Premium
+						</div>
+						<div>
+							<input type="radio" name="Type" value="Deluxe"> Deluxe
+						</div>
+						<div>
+							<input type="radio" name="Type" value="Executive"> Executive
+						</div>
+					</div>
+					
+					<form action="{% url 'services:create_booking' %}" method="POST">{% csrf_token %}
+						
+						<input type="number" name="user" value="{{ user.id }}"  hidden>
+						<input type="number" name="place" value="{{ room.id }}" hidden>
+					<div class=" p-4 flex">
+						<div class="">
+						<label for="checkin" class="block">Check In</label>	
+						<input type="date" name="check_in" class="border border-black p-2 rounded-lg">
+						
+						</div>
+						<div class="ml-6">
+						<label for="checkout" class="block">Check Out</label>	
+						<input type="date" name="check_out" class="border border-black p-2 rounded-lg">
+						
+						</div>
+					</div>
+					<div class="p-4">
+						<div >
+							<label for="quantity">How many are you ?</label>
+							<input type="number" name="quantity" value="1" class="border border-black p-2 rounded-lg">
+						</div>
+					</div>
+					<div class="p-4">
+						<button type="submit" class="w-full rounded-lg p-2 text-xl text-white bg-blue-900 font-bold h-12">
+							Check Availability
+						</button>
+					</div>
+				</form>
+					{% endif %}
+				</div>
+			</div>
+		</div>
+		</div>
+		</section>
+		
+	</main>
+
+	{% include 'base/footer.html' %}
+	
+{% endblock %}

@@ -57,7 +57,7 @@ class Listing(models.Model):
 	slug  = models.SlugField(max_length=255, unique=True, db_index=True,
 											help_text='Unique value for product page URL, created from name.')
 	description = models.TextField(blank=True)
-	#kind  = models.ForeignKey(Types,)
+	Type = models.CharField(max_length=255,default="hostel")
 	location = models.ForeignKey(Area, related_name="listing_area", on_delete=models.DO_NOTHING)
 	available = models.BooleanField()
 	owner = models.ForeignKey(User, related_name="users", on_delete=models.CASCADE)

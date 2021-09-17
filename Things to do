@@ -1,0 +1,12 @@
+
+ - Add a dimension field to the room model 
+ 	ensure that dimensions are inputed on the interface
+
+ - Create a carousel like scroll on the listing objects on the home page .
+ 	
+ - Build a newsletter form to collect contacts for a follow up session later on.
+
+ - contact owner button on the detail page to bring up a the above subcription form
+
+ - Add a pop up at the bottom left or top right that appears every time a new place is listed/rented out.
+

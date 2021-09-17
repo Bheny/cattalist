@@ -26,11 +26,13 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('listing/',include('listing.urls')),
     path('dashboard', include('dashboard.urls')),
-    path('app/', views.home, name="home"),
-    path('',views.landing, name="landing"),
+    path('', views.home, name="home"),
+    path('landing/',views.landing, name="landing"),
     path('about/',views.about, name="about"),
+    path('Search/', views.lookup, name="Search"),
+    path('my_booking_requests/', views.booking_requests, name="requests"),
     path('Signup/', register, name='register'),
     path('Login/', auth_views.LoginView.as_view(template_name='login.html'), name="login"),
     path('Logout/', auth_views.LogoutView.as_view(template_name='index.html'), name="logout"),
-    
+    path('service/', include('services.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

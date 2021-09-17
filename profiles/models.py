@@ -41,6 +41,11 @@ def save_user_profile(sender, instance, **kwargs):
 
 
 
+class Search_History(models.Model):
+	user = models.ForeignKey(User, on_delete=models.CASCADE)
+	keyword = models.CharField(max_length=600)
+	created = models.DateTimeField(auto_now_add=True)
 
-
+	def __str__(self):
+		return u'%s by %s' %(self.keyword,self.user)
     

@@ -1,0 +1,38 @@
+
+{% extends 'base/base.html' %}
+{% load static %}
+{% load thumbnail %}
+{% block content %}
+
+	{% include 'base/nav.html' %}
+	<main>
+		<div>
+			{% for request in requests %}
+			<div class="flex p-2 border-t border-b">
+				<div class="mr-2 w-2/6">
+						<img src="{{ request.customer.profile.image.url }}" class="w-12 h-12  rounded-full bg-cover">
+
+				</div>
+				<div class="mr-1 w-3/6">
+					<!-- info on booking -->
+					<span class="block text-lg font-bold block"> {{ request.customer.profile.user.username }}</span>
+					<span class="text-blue-600 underline"> view profile </span>				</div>
+				<div class="mr-1">
+					<!-- Decline -->
+					<button class="font-bold text-white bg-blue-800 p-2 rounded-lg">
+						Decline
+					</button>
+				</div>
+				<div>
+					<!-- Accept -->
+					<button class="font-bold text-white bg-blue-800 p-2 rounded-lg">
+						Accept
+					</button>
+				</div>
+			</div>
+			{% endfor %}
+		</div>
+	</main>
+
+	{% include 'base/footer.html' %}
+{% endblock %}

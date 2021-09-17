@@ -1,0 +1,121 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Cattalist.com</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+	<link rel="stylesheet" href="{% static '/fonts/ionicons/css/ionicons.min.css' %}">
+</head>
+<body >
+	<div id="modal" class="hidden">
+		
+		<div class="border rounded-lg bg-white w-2/3  self-center flex-1">
+			<div class="bg-blue-900 h-10 rounded-tr-lg rounded-tl-lg">
+				<div class="float-left p-1">
+					<span class="text-2xl text-white font-bold">Get Owner's Contact</span>
+				</div>
+				<div class="float-right p-2 border-black ">
+					<button class="font-bold">X</button>
+				</div>
+			</div>
+			<div class="text-center mt-4 border-gray-600">
+				<input type="text" name="phone" placeholder="Enter Your Name" class="p-3 rounded-lg bg-blue-900 text-white font-bold tracking-wider">
+				<input type="text" name="phone" placeholder="Enter Your Phone Number" class="p-3 rounded-lg bg-blue-900 text-white font-bold tracking-wider"><br>
+				<button class="w-full rounded-lg p-2 text-white font-bold bg-blue-900 mt-4">Send Owner's number</button>
+			</div>
+		</div>
+		
+	</div>
+	{% block content %}
+
+	{% endblock %}
+	<script type="text/javascript">
+		function openmodal(){
+			document.getElementById("modal").className ="flex h-screen bg-black bg-opacity-75 absolute w-full items-stretch pl-64 pr-64" 
+		}
+
+		function openNav() {
+				 document.getElementById("snav").className = "h-full w-2/3 border bg-gray-100 fixed p-2 z-10";
+ 				 
+			}
+
+		function Show() {
+				let element = document.getElementById("menu2");
+			if(element.className == "hidden"){
+				element.className = "rounded-lg fixed mt-12 w-64 pt-6 ml-24 mr-2 pr-2 p-2 bg-gray-100";
+			} else {
+				element.className = "hidden";
+			}
+			
+ 				 
+			}
+		function closeNav(){
+				document.getElementById("snav").className = "hidden";
+		}
+
+		function openNotification(){
+			let element = document.getElementById("notify") 
+			if(element.className == "hidden"){
+				element.className = "h-64 w-full mr-4 m-2 border bg-gray-100 my-12 rounded-lg fixed p-2";
+			} else {
+				element.className = "hidden";
+			};
+			
+					}
+		function closeNotification(){
+				document.getElementById("notify").className = "hidden";
+		}
+
+		function load(){
+			document.getElementById("more").className = "border shadow h-full mb-2 md:mr-2 rounded-lg ";
+		}
+
+		function hide(){
+			document.getElementById("signup").className = "hidden";
+		}
+
+		function hide_form(){
+			document.getElementById("complete_signup").className = "hidden";
+		}
+
+		function hide_form_2(){
+			document.getElementById("login").className = "hidden";
+		}
+
+		function show_login_form(){
+			closeNav();
+			document.getElementById("login").className = "h-full bg-black bg-opacity-75 w-full fixed rounded-lg";
+		}
+
+		function view(){
+			closeNav();
+			document.getElementById("signup").className = "h-full bg-black bg-opacity-75 w-full fixed rounded-lg";
+		}
+		function add(){
+			document.getElementById("bell").innerHTML = "Added to watchlist";
+		}
+		function expand(){
+			document.getElementById("start").className = "hidden";
+		}
+
+		function final(){
+			hide();
+			closeNav();
+			document.getElementById("complete_signup").className = "h-full bg-black bg-opacity-75 w-full fixed rounded-lg";
+		}
+
+	
+		function drop(){
+			let element = document.getElementById("dropdown");
+			if(element.className == "hidden"){
+				element.className = "mt-4 border-b pb-2";
+			} else {
+				element.className = "hidden";
+			}
+			
+		}
+	</script>
+</body>
+</html>

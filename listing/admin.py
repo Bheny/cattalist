@@ -1,10 +1,10 @@
 from django.contrib import admin
 from .models import Listing, Amenity, Event, Policy,\
 					 Room, Place, Room_Review, Place_Review, Listing_Review, Event_Review
-from .forms import PolicyAdminForm, RoomAdminForm
+from .forms import PolicyAdminForm, RoomAdminForm, ListingAdminForm
 
 class ListingAdmin(admin.ModelAdmin):
-	
+	form = ListingAdminForm
 	#fields = ['image','name','slug']
 	# sets up slug to be generated from product name
 	prepopulated_fields = {'slug' : ('name',)}

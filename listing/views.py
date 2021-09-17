@@ -4,7 +4,15 @@ from .models import Listing,Policy, Room, Event, Place, Amenity, Room_Review, Pl
 
 from profiles.models import Profile, Host_Review
 
+from services.forms import CreateBookingForm
+
+from services.services import Check_availability
+
 def room_detail(request, id, slug):
+	
+	form = CreateBookingForm()
+
+
 	room = get_object_or_404(Room,
 							 id=id,
 							 slug=slug,
@@ -18,5 +26,15 @@ def room_detail(request, id, slug):
 	
 	context = {'room':room,'reviews':reviews,
 			   'comments':comments,'rules':rules,
-			   'Safety':safety}
+			   'Safety':safety,'form':form}
 	return render(request, 'details.html', context)
+
+
+def setup(request):
+
+	return render(request, 'listing/begin.html', {})
+
+
+def next_1(request):
+
+	return render(request, 'listing/1.html', {})
