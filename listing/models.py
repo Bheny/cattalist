@@ -9,21 +9,16 @@ class Place(models.Model):
 	name = models.CharField(max_length=100)
 	slug = models.SlugField(max_length=255, unique=True, db_index=True, help_text='Unique value for place page URL, created from name.')
 	kind = models.CharField(max_length=255)
+	
 	available = models.BooleanField()
-	location = models.ForeignKey(Area, related_name="Place_area", on_delete=models.DO_NOTHING)	
-	digital_address = models.CharField(max_length=50)
+	location = 	models.CharField(max_length=255)
+	digital_address = models.CharField(max_length=50, blank=True)
 	description = models.TextField(blank=True)
-	opened_at = models.DateTimeField()
-	closed_at = models.DateTimeField()
 	created = models.DateTimeField(auto_now_add=True)
 	updated = models.DateTimeField(auto_now=True)
 	count = models.PositiveIntegerField(default=0, blank=True)
-	star_1 = models.PositiveIntegerField(default=0, blank=True)
-	star_2 = models.PositiveIntegerField(default=0, blank=True)
-	star_3 = models.PositiveIntegerField(default=0, blank=True)
-	star_4 = models.PositiveIntegerField(default=0, blank=True)
-	star_5 = models.PositiveIntegerField(default=0, blank=True)
 
+	'''
 	def total_rating(self):
 			from .models import Place
 			review = Place.objects.get(id=self.id)
@@ -33,9 +28,11 @@ class Place(models.Model):
 			if sum_n != 0:
 				total = rating / sum_n
 			return round(total,1)
+	'''
 
 	def __str__(self):
 		return self.name
+
 
 	def get_absolute_url(self):
 		#return f"/category/{self.slug}/"
@@ -57,21 +54,18 @@ class Listing(models.Model):
 	slug  = models.SlugField(max_length=255, unique=True, db_index=True,
 											help_text='Unique value for product page URL, created from name.')
 	description = models.TextField(blank=True)
-	Type = models.CharField(max_length=255,default="hostel")
+	type = models.CharField(max_length=255,default="hostel")
+	price = models.DecimalField(default=0,max_digits=999, decimal_places=2)
 	location = models.ForeignKey(Area, related_name="listing_area", on_delete=models.DO_NOTHING)
 	available = models.BooleanField()
 	owner = models.ForeignKey(User, related_name="users", on_delete=models.CASCADE)
 	#amenities = models.ManyToManyField(Amenity, related_name='Amenities')
-	digital_address = models.CharField(max_length=50)
+	digital_address = models.CharField(max_length=50, blank=True)
 	created = models.DateTimeField(auto_now_add=True)
 	updated = models.DateTimeField(auto_now=True)
 	count = models.PositiveIntegerField(default=0, blank=True)
-	star_1 = models.PositiveIntegerField(default=0, blank=True)
-	star_2 = models.PositiveIntegerField(default=0, blank=True)
-	star_3 = models.PositiveIntegerField(default=0, blank=True)
-	star_4 = models.PositiveIntegerField(default=0, blank=True)
-	star_5 = models.PositiveIntegerField(default=0, blank=True)
-
+	
+	'''
 	def total_rating(self):
 			from .models import Listing
 			review = Listing.objects.get(id=self.id)
@@ -82,7 +76,7 @@ class Listing(models.Model):
 			if sum_n != 0:
 				total = rating / sum_n
 			return round(total,1)
-
+	'''
 	def __str__(self):
 		return self.name
 	

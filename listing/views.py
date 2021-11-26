@@ -8,6 +8,21 @@ from services.forms import CreateBookingForm
 
 from services.services import Check_availability
 
+from rest_framework.decorators import api_view 
+
+from rest_framework.response import Response
+
+from rest_framework import status
+
+from .serializers import * 
+
+@api_view(['GET','POST'])
+def place_listings(request):
+	if request.method == 'GET':
+		listings = Listing.objects.all()
+		serializer = ListingsSerializer(listings, many=True)
+		return Response(serializer.data)
+
 def room_detail(request, id, slug):
 	
 	form = CreateBookingForm()

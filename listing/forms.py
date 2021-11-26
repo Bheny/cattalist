@@ -17,7 +17,7 @@ class ListingAdminForm(forms.ModelForm):
 
 	class Meta:
 		model = Listing
-		fields = ['image','name','slug','Type','description','location','available','owner','digital_address','star_1','star_2','star_3','star_4','star_5']
+		fields = ['image','name','slug','Type','description','location','available','owner','digital_address']
 
 class PolicyAdminForm(forms.ModelForm):
 	OPTIONS = [

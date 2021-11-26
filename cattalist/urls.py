@@ -25,7 +25,7 @@ from Users.views import register
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('listing/',include('listing.urls')),
-    path('dashboard', include('dashboard.urls')),
+    path('dashboard/', include('dashboard.urls')),
     path('', views.home, name="home"),
     path('landing/',views.landing, name="landing"),
     path('about/',views.about, name="about"),

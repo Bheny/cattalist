@@ -6,7 +6,7 @@ from services.models import Request
 def home(request ):
 	
 	context = list_all()
-	return render(request, '_index.html',context)
+	return render(request, 'index.html',context)
 
 def lookup(request):
 	context = {}
