@@ -13,3 +13,7 @@
 5. python manage.py runserver 
 
 6. Open localhost:8000 in browser
+
+
+### NOTE 
+	This project was rushed and wasn't completed fully there may be bugs . Feel free to correct and make use of . Thank you.
