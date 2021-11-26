@@ -46,9 +46,9 @@ INSTALLED_APPS = [
     'location',
     'services',
     ## Third parties
-    'corsheaders',
+    #'corsheaders',
     'sorl.thumbnail',
-    'rest_framework',
+    #'rest_framework',
 
 ]
 
